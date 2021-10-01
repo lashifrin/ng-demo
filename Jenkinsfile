@@ -1,4 +1,6 @@
 node {
+  
+  env.PATH = "/Users/leonidshifrin/.nvm/versions/node/v15.0.0/bin:${env.PATH}"
 
     stage('check tools') {
         sh "node -v"
