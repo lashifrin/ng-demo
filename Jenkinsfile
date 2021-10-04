@@ -1,25 +1,38 @@
-node {
-  
-  env.PATH = "/Users/leonidshifrin/.nvm/versions/node/v15.0.0/bin:${env.PATH}"
+pipeline {
+    agent any
 
-    stage('check tools') {
-        sh "node -v"
-        sh "npm -v"
-    }
+    //env.PATH = "/Users/leonidshifrin/.nvm/versions/node/v15.0.0/bin:${env.PATH}"
 
-    stage('checkout') {
-        checkout scm
-    }
+    stages {
+        stage('check tools') {
+            steps {
+                sh "node -v"
+                sh "npm -v"
+            }
+        }
 
-    stage('npm install') {
-        sh "npm install"
-    }
+        stage('checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
-    stage('unit tests') {
-        sh "npm test -- --watch=false"
-    }
+        stage('npm install') {
+            steps {
+                sh "npm install"
+            }
+        }
 
-    stage('protractor tests') {
-        sh "npm run e2e"
+        stage('unit tests') {
+            steps {
+                sh "npm test -- --watch=false"
+            }
+        }
+
+        stage('protractor tests') {
+            steps {
+                sh "npm run e2e"
+            }
+        }
     }
 }
