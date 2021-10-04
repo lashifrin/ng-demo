@@ -1,9 +1,9 @@
 pipeline {
     agent none
 
-    environment {
-        env.PATH = "/Users/leonidshifrin/.nvm/versions/node/v15.0.0/bin:${env.PATH}"
-    }
+    // environment {
+    //     env.PATH = "/Users/leonidshifrin/.nvm/versions/node/v15.0.0/bin:${env.PATH}"
+    // }
 
     stages {
         stage('check tools') {
